@@ -4,9 +4,6 @@ set(PROJECT_NAME win_flex)
 
 project(${PROJECT_NAME} C)
 
-# Definition of Macros
-add_definitions(-D_CONSOLE)
-
 file(GLOB src
     "src/*.c"
     "src/*.h"
@@ -20,6 +17,9 @@ list(REMOVE_ITEM src "${CMAKE_CURRENT_SOURCE_DIR}/src/libyywrap.c")
 add_executable(${PROJECT_NAME} 
    ${src}
 )
+
+target_compile_definitions(${PROJECT_NAME}
+    PRIVATE "_CONSOLE")
 
 target_include_directories(${PROJECT_NAME} PRIVATE "src")
 
