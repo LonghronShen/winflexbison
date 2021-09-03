@@ -274,8 +274,8 @@ bool filter_apply_chain (struct filter * chain, FILE* in_file, FILE* out_file)
 	char out_file_name[256] = "~X_flex_temp_XXXXXX";
 	static char file_num = '0';
 	FILE* mid_out_file = NULL;
-	int r;
-	bool result;
+	int r = 0;
+	bool result = false;
 
 	++file_num;
 	out_file_name[1] = file_num;
