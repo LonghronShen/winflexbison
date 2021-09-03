@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.0.0 FATAL_ERROR)
 
-set(PROJECT_NAME common_lib)
+set(PROJECT_NAME winflexbison_common)
 
 project(${PROJECT_NAME} C)
 
@@ -15,6 +15,7 @@ file(GLOB SOURCE_FILES
 	"m4/lib/*.c"
 	"m4/lib/*.h"
 )
+
 # exclude some source files
 list(REMOVE_ITEM SOURCE_FILES "${CMAKE_CURRENT_SOURCE_DIR}/m4/lib/regexec.c")
 list(REMOVE_ITEM SOURCE_FILES "${CMAKE_CURRENT_SOURCE_DIR}/m4/lib/regcomp.c")
