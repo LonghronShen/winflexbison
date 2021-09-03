@@ -7,20 +7,29 @@ project(${PROJECT_NAME} C)
 # Definition of Macros
 add_definitions(-D_CONSOLE)
 
-file(GLOB SOURCE_FILES
+file(GLOB src
     "src/*.c"
     "src/*.h"
 )
 
 # exclude some source files
-list(REMOVE_ITEM SOURCE_FILES "${CMAKE_CURRENT_SOURCE_DIR}/src/libmain.c")
-list(REMOVE_ITEM SOURCE_FILES "${CMAKE_CURRENT_SOURCE_DIR}/src/libyywrap.c")
+list(REMOVE_ITEM src "${CMAKE_CURRENT_SOURCE_DIR}/src/libmain.c")
+list(REMOVE_ITEM src "${CMAKE_CURRENT_SOURCE_DIR}/src/libyywrap.c")
 
 # Add executable to build.
 add_executable(${PROJECT_NAME} 
-   ${SOURCE_FILES}
+   ${src}
 )
 
 target_include_directories(${PROJECT_NAME} PRIVATE "src")
 
-target_link_libraries(${PROJECT_NAME} winflexbison_common kernel32.lib user32.lib)
+target_link_libraries(${PROJECT_NAME} 
+    PUBLIC winflexbison_common)
+
+# libfl
+add_library(fl STATIC 
+    "${CMAKE_CURRENT_SOURCE_DIR}/src/libmain.c"
+    "${CMAKE_CURRENT_SOURCE_DIR}/src/libyywrap.c")
+
+target_include_directories(fl
+    PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/src/")
