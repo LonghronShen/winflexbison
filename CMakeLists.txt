@@ -64,7 +64,7 @@ if(CMAKE_SOURCE_DIR STREQUAL CMAKE_CURRENT_SOURCE_DIR)
       install(DIRECTORY "${CMAKE_RUNTIME_OUTPUT_DIRECTORY_RELEASE}/" DESTINATION "./")
     endif()
 
-    install(DIRECTORY "custom_build_rules/" DESTINATION "./custom_build_rules/")
+    # install(DIRECTORY "custom_build_rules/" DESTINATION "./custom_build_rules/")
     install(DIRECTORY "bison/data/" DESTINATION "./data/")
     install(FILES "flex/src/FlexLexer.h" DESTINATION "./")
     install(FILES "changelog.md" DESTINATION "./")
